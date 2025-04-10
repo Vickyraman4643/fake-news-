@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detection</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f0f4f8; /* Light background color */
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .hero-section {
+            text-align: center;
+            padding: 50px 0;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .hero-section h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .hero-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        .hero-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .tool-section {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .tool-section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .alert-info {
+            background-color: #e9f7fe;
+            color: #31708f;
+            border: 1px solid #bce8f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <h1>Fake News Detection Tool</h1>
+            <p>Welcome to our Fake News Detection Tool. This tool helps you identify fake news articles with high accuracy. Simply enter the news article and let our model do the rest!</p>
+            <a href="#tool-section" class="btn btn-primary">Explore</a>
+        </div>
+        <div class="tool-section" id="tool-section">
+            <h2 class="text-center">Fake News Detection</h2>
+            <form action="/predict" method="post">
+                <div class="form-group">
+                    <label for="news">Enter News Article:</label>
+                    <textarea class="form-control" id="news" name="news" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Predict</button>
+            </form>
+            {% if prediction_text %}
+                <div class="alert alert-info mt-3" role="alert">
+                    {{ prediction_text }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
